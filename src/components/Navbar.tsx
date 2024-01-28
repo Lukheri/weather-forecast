@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div className='bg-base-300 flex items-center justify-between p-5 py-3'>
+    <div className='flex items-center justify-between bg-base-300 p-5 py-3'>
       <div className='hidden items-center gap-3 sm:flex'>
         <Link to='/'>
           <CloudSun size={40} />
@@ -21,13 +21,13 @@ const Navbar = () => {
             <Menu size={40} />
           </label>
         </div>
-        <div className='drawer-side '>
+        <div className='drawer-side z-10'>
           <label
             htmlFor='my-drawer'
             aria-label='close sidebar'
             className='drawer-overlay'
           ></label>
-          <ul className='menu bg-base-200 text-base-content min-h-full w-80 p-4'>
+          <ul className='menu min-h-full w-80 bg-base-200 p-4 text-base-content'>
             <Link to='/'>
               <CloudSun size={40} />
             </Link>

@@ -45,7 +45,7 @@ const Home = () => {
 
   return (
     <div className='flex h-full w-full justify-center p-12 py-16'>
-      <div className='card bg-base-100 flex w-1/2 flex-col gap-8 rounded-lg px-12 py-8 shadow-xl'>
+      <div className='card flex h-full w-full flex-col gap-8 rounded-lg bg-base-100 px-12 py-8 shadow-xl sm:h-fit sm:w-1/2'>
         <h2 className='card-title'>Hello Weather!</h2>
         <div className='flex gap-2'>
           <input

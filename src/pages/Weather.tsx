@@ -9,6 +9,7 @@ import {
   ThermometerSun,
   Wind,
 } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const Weather = () => {
   const [gridView, setGridView] = useState<boolean>(true)
@@ -87,7 +88,9 @@ const Weather = () => {
             <div>{`Cloud pct: ${weather.cloud_pct}%`}</div>
           </div>
           <div className='card-actions justify-end'>
-            <button className='btn btn-primary'>Search new City</button>
+            <Link to='/home'>
+              <button className='btn btn-primary'>Search new City</button>
+            </Link>
           </div>
         </div>
       </div>
