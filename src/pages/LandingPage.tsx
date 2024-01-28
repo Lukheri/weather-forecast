@@ -8,7 +8,7 @@ const LandingPage = () => {
 
   return (
     <div className='flex h-full w-full justify-center p-12 py-16'>
-      <div className='card flex w-1/2 flex-col gap-8 rounded-lg bg-base-100 px-12 py-8 shadow-xl'>
+      <div className='card flex w-full flex-col gap-8 rounded-lg bg-base-100 px-12 py-8 shadow-xl sm:w-1/2'>
         <h2 className='card-title'>Hello Weather!</h2>
         {!isAuthenticated ? (
           <>

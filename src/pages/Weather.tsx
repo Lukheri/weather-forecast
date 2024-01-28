@@ -67,7 +67,12 @@ const Weather = () => {
                 </tbody>
               </table>
               <div className='card-actions justify-end'>
-                <button className='btn btn-primary'>Search new City</button>
+                <button
+                  onClick={() => navigate('/home')}
+                  className='btn btn-primary'
+                >
+                  Search new City
+                </button>
               </div>
             </div>
             <div className={`card-body gap-4 ${gridView ? 'hidden' : ''}`}>
