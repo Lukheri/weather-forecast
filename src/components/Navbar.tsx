@@ -12,7 +12,7 @@ const Navbar = () => {
         </Link>
         <Link to='/'>Landing page</Link>
         <Link to='/home'>Home</Link>
-        {/* <Link to='/weather'>Weather</Link> */}
+        <Link to='/weather'>Weather</Link>
       </div>
       <div className='drawer sm:hidden'>
         <input id='my-drawer' type='checkbox' className='drawer-toggle' />
@@ -39,9 +39,9 @@ const Navbar = () => {
             <li>
               <Link to='/home'>Home</Link>
             </li>
-            {/* <li>
+            <li>
               <Link to='/weather'>Weather</Link>
-            </li> */}
+            </li>
           </ul>
         </div>
       </div>
