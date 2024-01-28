@@ -3,12 +3,9 @@ import { useWeatherStore } from '../stores/weather'
 import { useNavigate } from 'react-router'
 
 const Home = () => {
-  const [city, setCity] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
-
+  const { city, setCity, setWeather } = useWeatherStore()
   const navigate = useNavigate()
-
-  const { setWeather } = useWeatherStore()
 
   const getWeather = async () => {
     setIsLoading(true)
