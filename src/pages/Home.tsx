@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useWeatherStore } from '../stores/weather'
 import { useNavigate } from 'react-router'
+import UserDetails from '../components/UserDetails'
+import { withAuthenticationRequired } from '@auth0/auth0-react'
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -35,7 +37,6 @@ const Home = () => {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setCity(event.target.value as string)
-    console.log(city)
   }
 
   const handleDisplayWeather = async () => {
@@ -46,7 +47,7 @@ const Home = () => {
   return (
     <div className='flex h-full w-full justify-center p-12 py-16'>
       <div className='card flex h-full w-full flex-col gap-8 rounded-lg bg-base-100 px-12 py-8 shadow-xl sm:h-fit sm:w-1/2'>
-        <h2 className='card-title'>Hello Weather!</h2>
+        <UserDetails />
         <div className='flex gap-2'>
           <input
             type='text'
@@ -70,4 +71,7 @@ const Home = () => {
   )
 }
 
-export default Home
+export default withAuthenticationRequired(Home, {
+  // Show a message while the user waits to be redirected to the login page.
+  onRedirecting: () => <div>Redirecting you to the login page...</div>,
+})

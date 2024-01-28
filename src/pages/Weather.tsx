@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import moment from 'moment'
 import { useNavigate } from 'react-router-dom'
+import { withAuthenticationRequired } from '@auth0/auth0-react'
 
 const Weather = () => {
   const [gridView, setGridView] = useState<boolean>(true)
@@ -111,4 +112,7 @@ const Weather = () => {
   )
 }
 
-export default Weather
+export default withAuthenticationRequired(Weather, {
+  // Show a message while the user waits to be redirected to the login page.
+  onRedirecting: () => <div>Redirecting you to the login page...</div>,
+})
