@@ -1,6 +1,7 @@
 import { CloudSun, Menu } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import LogoutButton from './LogoutButton'
 
 const Navbar = () => {
   return (
@@ -45,7 +46,7 @@ const Navbar = () => {
         </div>
       </div>
       <div>
-        <button className='btn btn-accent'>Logout</button>
+        <LogoutButton />
       </div>
     </div>
   )
