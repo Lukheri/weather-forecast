@@ -2,8 +2,10 @@ import { CloudSun, Menu } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const Navbar = () => {
+  const { isAuthenticated } = useAuth0()
   return (
     <div className='flex items-center justify-between bg-base-300 p-5 py-3'>
       <div className='hidden items-center gap-3 sm:flex'>
@@ -11,8 +13,8 @@ const Navbar = () => {
           <CloudSun size={40} />
         </Link>
         <Link to='/'>Landing page</Link>
-        <Link to='/home'>Home</Link>
-        <Link to='/weather'>Weather</Link>
+        {isAuthenticated && <Link to='/home'>Home</Link>}
+        {isAuthenticated && <Link to='/weather'>Weather</Link>}
       </div>
       <div className='drawer sm:hidden'>
         <input id='my-drawer' type='checkbox' className='drawer-toggle' />
@@ -36,12 +38,16 @@ const Navbar = () => {
             <li>
               <Link to='/'>Landing page</Link>
             </li>
-            <li>
-              <Link to='/home'>Home</Link>
-            </li>
-            <li>
-              <Link to='/weather'>Weather</Link>
-            </li>
+            {isAuthenticated && (
+              <li>
+                <Link to='/home'>Home</Link>
+              </li>
+            )}
+            {isAuthenticated && (
+              <li>
+                <Link to='/weather'>Weather</Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
