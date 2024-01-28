@@ -9,11 +9,21 @@ import {
   ThermometerSun,
   Wind,
 } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import moment from 'moment'
+import { useNavigate } from 'react-router-dom'
 
 const Weather = () => {
   const [gridView, setGridView] = useState<boolean>(true)
   const { city, weather } = useWeatherStore()
+
+  const navigate = useNavigate()
+
+  const convertCtoF = (c: number) => {
+    const f = c * 1.8 + 32
+
+    return Math.round(f)
+  }
+
   return (
     <div className='relative flex h-full w-full justify-center p-12 py-16'>
       <button
@@ -46,10 +56,10 @@ const Weather = () => {
             <tbody>
               {/* row 1 */}
               <tr>
-                <th>1</th>
-                <td>{`${weather.temp}°C`}</td>
+                <th>{moment().format('L')}</th>
+                <td>{`${convertCtoF(weather.temp)}°F`}</td>
                 <td className='hidden sm:table-cell'>{`${weather.humidity}%`}</td>
-                <td className='hidden sm:table-cell'>{`${weather.wind_speed}m/s, ${weather.wind_degrees}°`}</td>
+                <td className='hidden sm:table-cell'>{`${weather.wind_speed} m/s, ${weather.wind_degrees}°`}</td>
                 <td className='hidden sm:table-cell'>{`${weather.cloud_pct}%`}</td>
               </tr>
             </tbody>
@@ -63,17 +73,17 @@ const Weather = () => {
             Weather in <span className='capitalize'>{city}</span> today!
           </h2>
 
-          {/* <div className='flex gap-4'>
+          <div className='flex gap-4'>
             <Calendar size={32} />
-            <div>{`Date now: ${weather.humidity}%`}</div>
-          </div> */}
+            <div>{`Date now: ${moment().format('L')}`}</div>
+          </div>
           <div className='flex gap-4'>
             {weather.temp > 26 ? (
               <ThermometerSun size={32} />
             ) : (
               <ThermometerSnowflake size={32} />
             )}
-            <div>{`Temperature: ${weather.temp}°C`}</div>
+            <div>{`Temperature: ${convertCtoF(weather.temp)}°F`}</div>
           </div>
           <div className='flex gap-4'>
             <Droplets size={32} />
@@ -88,9 +98,12 @@ const Weather = () => {
             <div>{`Cloud pct: ${weather.cloud_pct}%`}</div>
           </div>
           <div className='card-actions justify-end'>
-            <Link to='/home'>
-              <button className='btn btn-primary'>Search new City</button>
-            </Link>
+            <button
+              onClick={() => navigate('/home')}
+              className='btn btn-primary'
+            >
+              Search new City
+            </button>
           </div>
         </div>
       </div>
