@@ -12,7 +12,11 @@ const Home = () => {
   const getWeather = async () => {
     setIsLoading(true)
     try {
-      const apiKey = 'CQjHLR+speye5Qru755TJA==8p6Qir3rgO05gckU'
+      const apiKey = process.env.REACT_APP_API_KEY
+
+      if (!apiKey) {
+        throw new Error('API_KEY is not defined in the environment variables.')
+      }
 
       const response = await fetch(
         `https://api.api-ninjas.com/v1/weather?city=${city}`,

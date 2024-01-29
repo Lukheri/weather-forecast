@@ -7,11 +7,19 @@ import { BrowserRouter } from 'react-router-dom'
 import { Auth0Provider } from '@auth0/auth0-react'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+const domain = process.env.REACT_APP_AUTH_DOMAIN
+const clientId = process.env.REACT_APP_CLIENT_ID
+if (!domain) {
+  throw new Error('AUTH_DOMAIN is not defined in the environment variables.')
+}
+if (!clientId) {
+  throw new Error('CLIENT_ID is not defined in the environment variables.')
+}
 root.render(
   <React.StrictMode>
     <Auth0Provider
-      domain='dev-z5l6euyxtitwva8j.us.auth0.com'
-      clientId='qCUxqovDSyiqS7cL7XFIVxthItbMT1uG'
+      domain={domain}
+      clientId={clientId}
       authorizationParams={{
         redirect_uri: window.location.origin,
       }}
